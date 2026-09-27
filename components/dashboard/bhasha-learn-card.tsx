@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ArrowRight, BookOpen, ChevronDown, Languages, ScanLine } from 'lucide-react'
+import { FunIcon } from '@/components/os/fun-icon'
 import { ProgressBar } from './progress-bar'
 
 const languages = ['Hindi', 'English', 'Marathi', 'Tamil', 'Telugu', 'Bengali']
@@ -21,7 +22,9 @@ export function BhashaLearnCard() {
       />
 
       <div className="relative flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex flex-col gap-2">
+        <div className="flex items-start gap-4">
+          <FunIcon name="languages" size={64} float className="hidden sm:inline-flex" />
+          <div className="flex flex-col gap-2">
           <span className="flex w-fit items-center gap-1.5 rounded-full border border-neon/25 bg-neon/10 px-2.5 py-1 text-xs font-semibold text-neon-soft">
             <BookOpen className="size-3.5" aria-hidden="true" />
             Bhasha Learn
@@ -32,6 +35,7 @@ export function BhashaLearnCard() {
           <p className="text-sm text-muted-foreground">
             Chapter 5 &middot; Photosynthesis &amp; cell organelles &middot; 12 lessons
           </p>
+          </div>
         </div>
 
         <label className="relative flex w-fit items-center gap-2 rounded-xl border border-border bg-secondary/70 py-2 pl-3 pr-9 text-sm text-foreground focus-within:ring-2 focus-within:ring-ring">

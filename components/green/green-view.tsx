@@ -2,15 +2,16 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { ArrowDown, ArrowUp, Bike, Droplets, Minus, Recycle, Zap } from 'lucide-react'
+import { ArrowDown, ArrowUp, Minus } from 'lucide-react'
+import { FunIcon, type FunIconName } from '@/components/os/fun-icon'
 import { ProgressRing } from '@/components/os/progress-ring'
 import { cn } from '@/lib/utils'
 
-const breakdown = [
-  { label: 'Recycling', value: '160 pts', icon: Recycle },
-  { label: 'Cycling to campus', value: '140 pts', icon: Bike },
-  { label: 'Energy saved', value: '90 pts', icon: Zap },
-  { label: 'Water saved', value: '60 pts', icon: Droplets },
+const breakdown: Array<{ label: string; value: string; icon: FunIconName }> = [
+  { label: 'Recycling', value: '160 pts', icon: 'recycle' },
+  { label: 'Cycling to campus', value: '140 pts', icon: 'bike' },
+  { label: 'Energy saved', value: '90 pts', icon: 'bolt' },
+  { label: 'Water saved', value: '60 pts', icon: 'water' },
 ]
 
 type Period = 'Week' | 'Month' | 'All time'
@@ -139,9 +140,9 @@ export function GreenView() {
             <span className="font-mono font-semibold text-foreground">550</span> pts to reach Eco Champion
           </p>
           <ul className="grid w-full grid-cols-2 gap-3">
-            {breakdown.map(({ label, value, icon: Icon }) => (
-              <li key={label} className="flex items-center gap-2.5 rounded-xl border border-border bg-white/[0.02] p-3">
-                <Icon className="size-4 shrink-0 text-neon-soft" aria-hidden="true" />
+            {breakdown.map(({ label, value, icon }) => (
+              <li key={label} className="group flex items-center gap-2.5 rounded-xl border border-border bg-white/[0.02] p-2.5 transition-colors hover:border-neon/40">
+                <FunIcon name={icon} size={40} />
                 <div className="flex flex-col leading-tight">
                   <span className="text-[11px] text-muted-foreground">{label}</span>
                   <span className="font-mono text-sm font-semibold text-foreground">{value}</span>

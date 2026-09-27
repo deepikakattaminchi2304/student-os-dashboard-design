@@ -1,21 +1,21 @@
 'use client'
 
 import { useState } from 'react'
-import { CheckCircle2, Coffee, Gift, History, NotebookPen, Printer, Shirt, Sparkles } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { CheckCircle2, Gift, History, Sparkles } from 'lucide-react'
+import { FunIcon, type FunIconName } from '@/components/os/fun-icon'
 import { Button } from '@/components/ui/button'
 import { ProgressRing } from '@/components/os/progress-ring'
 import { cn } from '@/lib/utils'
 
 const NEXT_TIER = 3000
 
-type Reward = { id: string; name: string; cost: number; icon: LucideIcon }
+type Reward = { id: string; name: string; cost: number; icon: FunIconName }
 
 const rewards: Reward[] = [
-  { id: 'coffee', name: 'Canteen Chai Pass', cost: 150, icon: Coffee },
-  { id: 'print', name: '50 Free Prints', cost: 300, icon: Printer },
-  { id: 'notes', name: 'Premium Notes Pack', cost: 600, icon: NotebookPen },
-  { id: 'hoodie', name: 'ALLEN Campus Hoodie', cost: 1800, icon: Shirt },
+  { id: 'coffee', name: 'Canteen Chai Pass', cost: 150, icon: 'chai' },
+  { id: 'print', name: '50 Free Prints', cost: 300, icon: 'printer' },
+  { id: 'notes', name: 'Premium Notes Pack', cost: 600, icon: 'notebook' },
+  { id: 'hoodie', name: 'ALLEN Campus Hoodie', cost: 1800, icon: 'hoodie' },
 ]
 
 const history = [
@@ -122,17 +122,14 @@ export function WalletView() {
               </div>
               <ul className="flex flex-col gap-3">
                 {rewards.map((r) => {
-                  const Icon = r.icon
                   const done = redeemed.includes(r.id)
                   const affordable = coins >= r.cost
                   return (
                     <li
                       key={r.id}
-                      className="flex items-center gap-3 rounded-xl border border-border bg-white/[0.02] p-3"
+                      className="group flex items-center gap-3 rounded-xl border border-border bg-white/[0.02] p-3 transition-colors hover:border-amber/40"
                     >
-                      <span className="flex size-10 items-center justify-center rounded-lg bg-amber/10 text-amber">
-                        <Icon className="size-5" aria-hidden="true" />
-                      </span>
+                      <FunIcon name={r.icon} size={48} />
                       <div className="flex flex-1 flex-col">
                         <span className="text-sm font-medium text-foreground">{r.name}</span>
                         <span className="font-mono text-xs text-muted-foreground">{r.cost} coins</span>

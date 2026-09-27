@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Check, Target } from 'lucide-react'
+import { Check } from 'lucide-react'
+import { FunIcon } from '@/components/os/fun-icon'
 import { cn } from '@/lib/utils'
 
 const initialMissions = [
@@ -21,7 +22,7 @@ export function ActiveMissions() {
     <section aria-labelledby="missions-title" className="glass-card flex flex-col gap-4 p-6">
       <div className="flex items-center justify-between">
         <h2 id="missions-title" className="flex items-center gap-2 text-base font-semibold text-foreground">
-          <Target className="size-4 text-neon-soft" aria-hidden="true" />
+          <FunIcon name="target" size={36} float />
           Active Missions
         </h2>
         <span className="font-mono text-xs text-muted-foreground">

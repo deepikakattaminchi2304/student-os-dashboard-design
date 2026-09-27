@@ -80,4 +80,37 @@
       0 0 0 1px rgb(16 185 129 / 0.04),
       0 0 32px -8px rgb(16 185 129 / 0.18);
   }
+
+  .fun-icon {
+    transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .group:hover .fun-icon,
+  .fun-icon:hover {
+    transform: scale(1.15) rotate(-8deg);
+  }
+  .fun-icon-float {
+    animation: fun-float 3.2s ease-in-out infinite;
+  }
+}
+
+@keyframes fun-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fun-icon,
+  .fun-icon-float {
+    animation: none;
+    transition: none;
+  }
+  .group:hover .fun-icon,
+  .fun-icon:hover {
+    transform: none;
+  }
 }

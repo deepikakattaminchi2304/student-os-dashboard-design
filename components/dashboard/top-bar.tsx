@@ -1,19 +1,18 @@
 import Image from 'next/image'
-import { Flame, Leaf, Trophy, Wallet } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { FunIcon, type FunIconName } from '@/components/os/fun-icon'
 import { cn } from '@/lib/utils'
 
 type Metric = {
   label: string
   value: string
-  icon: LucideIcon
+  icon: FunIconName
   tone: 'amber' | 'green' | 'emerald'
 }
 
 const metrics: Metric[] = [
-  { label: 'Campus XP', value: '1250 XP', icon: Trophy, tone: 'amber' },
-  { label: 'Pocket Bank', value: '₹1500', icon: Wallet, tone: 'green' },
-  { label: 'Green Points', value: '450 PTS', icon: Leaf, tone: 'emerald' },
+  { label: 'Campus XP', value: '1250 XP', icon: 'trophy', tone: 'amber' },
+  { label: 'Pocket Bank', value: '₹1500', icon: 'coins', tone: 'green' },
+  { label: 'Green Points', value: '450 PTS', icon: 'leaf', tone: 'emerald' },
 ]
 
 const toneStyles: Record<Metric['tone'], string> = {
@@ -46,18 +45,18 @@ export function TopBar() {
           className="size-8 rounded-full object-cover ring-2 ring-neon/40"
         />
         <span className="text-sm font-medium text-foreground">Aarav Sharma</span>
-        <span className="flex items-center gap-1 rounded-full bg-amber/15 px-2.5 py-1 text-xs font-semibold text-amber">
-          <Flame className="size-3.5" aria-hidden="true" />5 day streak
+        <span className="group flex items-center gap-1.5 rounded-full bg-amber/15 py-1 pl-1 pr-2.5 text-xs font-semibold text-amber">
+          <FunIcon name="flame" size={20} className="rounded-full" />5 day streak
         </span>
       </div>
 
       <ul className="flex flex-wrap items-center gap-3" aria-label="Your metrics">
-        {metrics.map(({ label, value, icon: Icon, tone }) => (
+        {metrics.map(({ label, value, icon, tone }) => (
           <li
             key={label}
-            className={cn('flex items-center gap-2.5 rounded-xl border px-3 py-2', toneStyles[tone])}
+            className={cn('group flex items-center gap-2.5 rounded-xl border py-1.5 pl-1.5 pr-3', toneStyles[tone])}
           >
-            <Icon className="size-4" aria-hidden="true" />
+            <FunIcon name={icon} size={34} />
             <div className="flex flex-col leading-tight">
               <span className="text-[11px] font-medium text-muted-foreground">{label}</span>
               <span className="font-mono text-sm font-semibold">{value}</span>

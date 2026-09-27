@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { Crown, Leaf, TrendingUp, Wallet } from 'lucide-react'
+import { TrendingUp } from 'lucide-react'
+import { FunIcon } from '@/components/os/fun-icon'
 import { cn } from '@/lib/utils'
 import { ProgressBar } from './progress-bar'
 
@@ -10,9 +11,7 @@ function PocketBankWidget() {
         <h2 id="bank-title" className="text-sm font-medium text-muted-foreground">
           Pocket Bank
         </h2>
-        <span className="flex size-9 items-center justify-center rounded-lg bg-neon/10 text-neon">
-          <Wallet className="size-4" aria-hidden="true" />
-        </span>
+        <FunIcon name="coins" size={48} float />
       </div>
       <div className="flex items-baseline gap-2">
         <p className="font-mono text-3xl font-bold text-foreground">₹1500</p>
@@ -36,9 +35,7 @@ function GreenMeterWidget() {
         <h2 id="green-title" className="text-sm font-medium text-muted-foreground">
           Green Meter
         </h2>
-        <span className="flex size-9 items-center justify-center rounded-lg bg-neon-soft/10 text-neon-soft shadow-[0_0_16px_-4px_#34D399]">
-          <Leaf className="size-4" aria-hidden="true" />
-        </span>
+        <FunIcon name="leaf" size={48} float />
       </div>
       <div className="flex items-baseline gap-2">
         <p className="font-mono text-3xl font-bold text-foreground">450</p>
@@ -71,9 +68,7 @@ function LeaderboardWidget() {
         <h2 id="leader-title" className="text-sm font-medium text-muted-foreground">
           Campus Leaderboard
         </h2>
-        <span className="flex size-9 items-center justify-center rounded-lg bg-amber/10 text-amber">
-          <Crown className="size-4" aria-hidden="true" />
-        </span>
+        <FunIcon name="crown" size={48} float />
       </div>
       <ol className="flex flex-col gap-3">
         {leaders.map((leader) => (

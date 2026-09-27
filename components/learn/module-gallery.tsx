@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Atom, BookOpen, Calculator, Dna, FlaskConical, Languages, Play } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { Play } from 'lucide-react'
+import { FunIcon, type FunIconName } from '@/components/os/fun-icon'
 import { Button } from '@/components/ui/button'
 import { ProgressBar } from '@/components/dashboard/progress-bar'
 import { cn } from '@/lib/utils'
@@ -16,17 +16,17 @@ type Module = {
   subject: Subject
   chapters: number
   progress: number
-  icon: LucideIcon
+  icon: FunIconName
   live?: boolean
 }
 
 const modules: Module[] = [
-  { id: 'phy', title: 'Physics', book: 'Laws of Motion · Class 11', subject: 'Science', chapters: 14, progress: 65, icon: Atom, live: true },
-  { id: 'bio', title: 'Biology', book: 'Cell: The Unit of Life', subject: 'Science', chapters: 12, progress: 40, icon: Dna },
-  { id: 'chem', title: 'Chemistry', book: 'Chemical Bonding', subject: 'Science', chapters: 10, progress: 22, icon: FlaskConical },
-  { id: 'math', title: 'Mathematics', book: 'Calculus Foundations', subject: 'Maths', chapters: 16, progress: 81, icon: Calculator },
-  { id: 'hin', title: 'Hindi Literature', book: 'Aaroh Bhaag 1', subject: 'Languages', chapters: 9, progress: 55, icon: Languages },
-  { id: 'eng', title: 'English', book: 'Hornbill Reader', subject: 'Languages', chapters: 8, progress: 0, icon: BookOpen },
+  { id: 'phy', title: 'Physics', book: 'Laws of Motion · Class 11', subject: 'Science', chapters: 14, progress: 65, icon: 'atom', live: true },
+  { id: 'bio', title: 'Biology', book: 'Cell: The Unit of Life', subject: 'Science', chapters: 12, progress: 40, icon: 'dna' },
+  { id: 'chem', title: 'Chemistry', book: 'Chemical Bonding', subject: 'Science', chapters: 10, progress: 22, icon: 'flask' },
+  { id: 'math', title: 'Mathematics', book: 'Calculus Foundations', subject: 'Maths', chapters: 16, progress: 81, icon: 'calculator' },
+  { id: 'hin', title: 'Hindi Literature', book: 'Aaroh Bhaag 1', subject: 'Languages', chapters: 9, progress: 55, icon: 'languages' },
+  { id: 'eng', title: 'English', book: 'Hornbill Reader', subject: 'Languages', chapters: 8, progress: 0, icon: 'book' },
 ]
 
 const filters: Array<'All' | Subject> = ['All', 'Science', 'Maths', 'Languages']
@@ -78,20 +78,17 @@ export function ModuleGallery() {
 }
 
 function ModuleCard({ module: m }: { module: Module }) {
-  const Icon = m.icon
   const status = m.progress === 0 ? 'Start' : m.progress === 100 ? 'Review' : 'Continue'
 
   return (
     <article
       className={cn(
-        'glass-card flex h-full flex-col gap-5 p-6 transition-colors hover:border-neon/50',
+        'group glass-card flex h-full flex-col gap-5 p-6 transition-colors hover:border-neon/50',
         m.live && 'border-neon/50',
       )}
     >
       <div className="flex items-start justify-between gap-3">
-        <span className="flex size-12 items-center justify-center rounded-xl bg-neon/10 text-neon-soft">
-          <Icon className="size-6" aria-hidden="true" />
-        </span>
+        <FunIcon name={m.icon} size={64} />
         {m.live ? (
           <span className="flex items-center gap-1.5 rounded-full bg-neon/15 px-2.5 py-1 text-[11px] font-semibold text-neon-soft">
             <span className="relative flex size-2" aria-hidden="true">
