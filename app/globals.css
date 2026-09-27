@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-neon: var(--neon);
+  --color-neon-soft: var(--neon-soft);
+  --color-amber: var(--amber);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: 16px;
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: dark;
+  --background: #060d0a;
+  --foreground: #ffffff;
+  --card: rgb(10 20 16 / 0.15);
+  --card-foreground: #ffffff;
+  --popover: #0a1410;
+  --popover-foreground: #ffffff;
+  --primary: #10b981;
+  --primary-foreground: #04110b;
+  --secondary: #0f1d17;
+  --secondary-foreground: #ffffff;
+  --muted: #0f1d17;
+  --muted-foreground: #9ca3af;
+  --accent: #10241b;
+  --accent-foreground: #ffffff;
+  --destructive: #f87171;
+  --border: rgb(16 185 129 / 0.2);
+  --input: rgb(16 185 129 / 0.25);
+  --ring: #34d399;
+  --neon: #10b981;
+  --neon-soft: #34d399;
+  --amber: #f59e0b;
+  --radius: 0.625rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-border backdrop-blur-md;
+    background-color: rgb(10 20 16 / 0.15);
+    box-shadow:
+      0 0 0 1px rgb(16 185 129 / 0.04),
+      0 0 32px -8px rgb(16 185 129 / 0.18);
+  }
+}
