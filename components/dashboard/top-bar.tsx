@@ -32,9 +32,9 @@ export function TopBar() {
         >
           A
         </div>
-        <h1 className="text-lg font-bold tracking-tight text-foreground text-balance">
+        <p className="text-lg font-bold tracking-tight text-foreground text-balance">
           ALLEN 2040 <span className="font-medium text-muted-foreground">Student OS</span>
-        </h1>
+        </p>
       </div>
 
       <div className="flex w-fit items-center gap-3 rounded-full border border-border bg-secondary/60 py-1.5 pl-1.5 pr-2">
